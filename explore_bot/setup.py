@@ -24,6 +24,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
+                'detector = explore_bot.color_detector_node:main',
         ],
-    },
+},
 )
