@@ -15,7 +15,7 @@ def generate_launch_description():
 
     pkg_gazebo_ros = FindPackageShare(package='gazebo_ros').find('gazebo_ros')   
 
-    world_file_name = 'house2.world'
+    world_file_name = 'house.world'
     world_path = os.path.join(get_package_share_directory(package_name), 'worlds', world_file_name)
 
     # rsp = IncludeLaunchDescription(
