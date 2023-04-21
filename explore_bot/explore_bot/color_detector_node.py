@@ -1,5 +1,6 @@
 import rclpy
 import numpy as np
+import math
 
 from rclpy.node import Node
 from sensor_msgs.msg import Image
@@ -97,6 +98,7 @@ class ColorDetector(Node):
         center = None
         c = 0
         radius = 0
+        Ball = ""
 
         global black_ball, red_ball, yellow_ball, green_ball, blue_ball, magenta_ball
 
@@ -107,7 +109,7 @@ class ColorDetector(Node):
             center = (int(M["m10"] / M["m00"]), int(M["m01"] / M["m00"]))
             cv2.circle(current_frame, (int(x), int(y)), int(radius), (0, 255, 255), 2)
             cv2.circle(current_frame, center, 5, (0, 0, 255), -1)
-            print ("Black ball detected.\n")
+            Ball = "Black"
 
         if len(cnts_r) > 0:
             c = max(cnts_r, key=cv2.contourArea)
@@ -116,7 +118,7 @@ class ColorDetector(Node):
             center = (int(M["m10"] / M["m00"]), int(M["m01"] / M["m00"]))
             cv2.circle(current_frame, (int(x), int(y)), int(radius), (0, 255, 255), 2)
             cv2.circle(current_frame, center, 5, (0, 0, 255), -1)
-            print ("Red ball detected.\n")
+            Ball = "Red"
 
         if len(cnts_y) > 0:
             c = max(cnts_y, key=cv2.contourArea)
@@ -125,7 +127,7 @@ class ColorDetector(Node):
             center = (int(M["m10"] / M["m00"]), int(M["m01"] / M["m00"]))
             cv2.circle(current_frame, (int(x), int(y)), int(radius), (0, 255, 255), 2)
             cv2.circle(current_frame, center, 5, (0, 0, 255), -1)
-            print ("Yellow ball detected.\n")
+            Ball = "Yellow"
 
         if len(cnts_g) > 0:
             c = max(cnts_g, key=cv2.contourArea)
@@ -134,7 +136,7 @@ class ColorDetector(Node):
             center = (int(M["m10"] / M["m00"]), int(M["m01"] / M["m00"]))
             cv2.circle(current_frame, (int(x), int(y)), int(radius), (0, 255, 255), 2)
             cv2.circle(current_frame, center, 5, (0, 0, 255), -1)
-            print ("Green ball detected.\n")
+            Ball = "Green"
 
         if len(cnts_blu) > 0:
             c = max(cnts_blu, key=cv2.contourArea)
@@ -143,7 +145,7 @@ class ColorDetector(Node):
             center = (int(M["m10"] / M["m00"]), int(M["m01"] / M["m00"]))
             cv2.circle(current_frame, (int(x), int(y)), int(radius), (0, 255, 255), 2)
             cv2.circle(current_frame, center, 5, (0, 0, 255), -1)
-            print ("Blue ball detected.\n")
+            Ball = "Blue"
 
         if len(cnts_m) > 0:
             c = max(cnts_m, key=cv2.contourArea)
@@ -152,17 +154,43 @@ class ColorDetector(Node):
             center = (int(M["m10"] / M["m00"]), int(M["m01"] / M["m00"]))
             cv2.circle(current_frame, (int(x), int(y)), int(radius), (0, 255, 255), 2)
             cv2.circle(current_frame, center, 5, (0, 0, 255), -1)
-            print ("Magenta ball detected.\n")
+            Ball = "Magenta"
 
+        font                   = cv2.FONT_HERSHEY_SIMPLEX
+        bottomLeftCornerOfText = (0,50)
+        fontScale              = 0.7
+        fontColor              = (255,255,255)
+        thickness              = 1
+        lineType               = 2
+
+        if Ball != "":
+            detection = Ball + " Ball Detected"
+            print (detection+ "\n")
+            cv2.putText(current_frame, detection, 
+                bottomLeftCornerOfText, 
+                font, 
+                fontScale,
+                fontColor,
+                thickness,
+                lineType)
+
+            cv2.putText(current_frame,'Radius: ' + str(math.floor(radius)) + 'px', 
+                (0,100), 
+                font, 
+                fontScale,
+                fontColor,
+                thickness,
+                lineType)
+            cv2.putText(current_frame,'Centroid: ' + str((math.floor(x), math.floor(y))) + 'px', 
+                (0, 150), 
+                font, 
+                fontScale,
+                fontColor,
+                thickness,
+                lineType)
         cv2.imshow("camera", current_frame)
         cv2.waitKey(1)
         c = 0
-
-
-
-
-
-
 
 def main(args=None):
     rclpy.init(args=args)
