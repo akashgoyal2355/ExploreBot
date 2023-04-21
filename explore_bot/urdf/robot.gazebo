@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<robot>
+    <!-- materials -->
+        <gazebo reference="chassis">
+            <material>Gazebo/Red</material>
+        </gazebo>
+
+        <gazebo reference="left_wheel">
+            <material>Gazebo/Blue</material>
+        </gazebo>
+
+        <gazebo reference="right_wheel">
+            <material>Gazebo/Blue</material>
+        </gazebo>
+
+        <gazebo reference="caster_wheel">
+            <material>Gazebo/Black</material>
+        </gazebo>
+
+</robot>

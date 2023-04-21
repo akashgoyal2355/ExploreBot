@@ -4,6 +4,7 @@
     <xacro:include filename="inertial_macros.xacro"/>
     <xacro:include filename="gazebo_control.xacro"/>
     <xacro:include filename="camera.xacro" /> 
+    <xacro:include filename="robot.gazebo"/>
 
     <material name="white">
         <color rgba="1 1 1 1" />
@@ -14,7 +15,7 @@
     </material>
 
     <material name="blue">
-        <color rgba="0.2 0.2 1 1"/>
+        <color rgba="0.203125 0.23828125 0.28515625 1.0"/>
     </material>
 
     <material name="black">
@@ -42,7 +43,7 @@
             <geometry>
                 <box size="0.3 0.3 0.15"/>
             </geometry>
-            <material name="white"/>
+            <material name="red"/>
         </visual>
         <collision>
             <origin xyz="0.15 0 0.075"/>
@@ -54,6 +55,10 @@
             <origin xyz="0.15 0 0.075" rpy="0 0 0"/>
         </xacro:inertial_box>
     </link>
+
+    <!-- <gazebo reference="chassis">
+        <material>Gazebo/Red</material>
+    </gazebo> -->
     
     <!-- LEFT WHEEL LINK -->
 
@@ -69,7 +74,7 @@
             <geometry>
                 <cylinder radius="0.05" length="0.04"/>
             </geometry>
-            <material name="blue"/>
+            <material name="white"/>
         </visual>
         <collision>
             <geometry>
@@ -95,7 +100,7 @@
             <geometry>
                 <cylinder radius="0.05" length="0.04"/>
             </geometry>
-            <material name="blue"/>
+            <material name="white"/>
         </visual>
         <collision>
             <geometry>
