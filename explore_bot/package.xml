@@ -15,6 +15,10 @@
   <depend>rclpy</depend>
   <depend>std_msgs</depend>
   <depend>sensor_msgs</depend>
+  <depend>imutils</depend>
+  <depend>cv2</depend>
+  <depend>cv_bridgs</depend>
+  <depend>urdf</depend>
 
   <export>
     <build_type>ament_python</build_type>
