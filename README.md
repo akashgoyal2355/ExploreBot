@@ -54,6 +54,8 @@ The robot is a custom designed chassis with 2 defferential drive wheels, 1 casto
 
     This will launch a Gazebo server with the robot spawned inside the `house.world`, as can be seen below.
     
+    ![gazebo](/attachments/gazebo2.PNG)
+    
     This robot can then be controlled by publishing velocity commands onto the `/cmd_vel` topic. The [teleop_twist_keyboard](https://index.ros.org/p/teleop_twist_keyboard/github-ros2-teleop_twist_keyboard/) can be used to publish the velocity commands and control the robot.
 
     `ros2 run teleop_twist_keyboard teleop_twist_keyboard `
@@ -63,10 +65,24 @@ The robot is a custom designed chassis with 2 defferential drive wheels, 1 casto
     `ros2 run explore_bot detector`
 
     The `detector` node will open a OpenCV window with the camera frames published by the robot's camera. Additionally, as soon as there is a colored ball detected by the robot, the detection information can be observed on the window, as shown below.
+    
+    ![opencv](/attachments/red_ball_detection.PNG)
+    
+    ![opencv2](/attachments/green_ball_detection.PNG)
 
 # Robot
 
+![robot3](/attachments/robot3.PNG)
+
+![robot2](/attachments/robot2.PNG)
+
+![robot](/attachments/robot.PNG)
+
+![robot_cam](/attachments/robot_cam.PNG)
+
 # World
+
+![gazebo](/attachments/gazebo.PNG)
 
 # RQT Graph
 
