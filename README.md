@@ -3,19 +3,25 @@
 This repo holds a ROS2 package named `explore_bot`.
 
 # Overview
-`explore_bot` provides a simulation based control of a mobile robot that is capable of detecting colored balls in the environment, and find their centroid and radius in pixels.
+`explore_bot` provides a simulation based control of a mobile robot that is capable of detecting colored balls in the environment, and find their centroid and radius in pixels with respect to the camera frame.
 
-The robot is a custom designed chassis with 2 defferential drive wheels, 1 castor wheel, and a RGB camera on-board. The robot can be controlled by sending velocity commands of type [geometry_msgs/msg/Twist](https://docs.ros2.org/galactic/api/geometry_msgs/msg/Twist.html) over the `/cmd_vel` topic.
+The robot is a custom designed chassis with:
+
+- 2 defferential drive wheels
+- 1 castor wheel
+- 1 RGB camera
+
+The robot can be controlled by sending velocity commands of type [geometry_msgs/msg/Twist](https://docs.ros2.org/galactic/api/geometry_msgs/msg/Twist.html) over the `/cmd_vel` topic.
 
 # Entities
 
 1. URDF files:
 
-    - `robot.urdf.xacro`: An XML file defining the robot's joint and links.
+    - `robot.urdf.xacro`: An XML file defining the robot's joints and links.
     - `robot.gazebo`: An XML file defining the gazebo materials of the robot's links.
     - `inertial_macros.xacro`: An XML file defining the inertial properties of the robot's links.
     - `gazebo_control.xacro`: An XML file defining the differential drive gazebo plugin for the robot's wheels.
-    - `camera.xacro`: An XML file defning the robot's RGB camera link and the gazebo camera controller plugin.
+    - `camera.xacro`: An XML file defning the robot's RGB camera link and the camera controller gazebo plugin.
 
 2. `spawn.launch.py`: This is a ROS2 launch file written in Python that spawns the robot inside the custom `house.world` in Gazebo. It also launches the `robot_state_publisher` that uses the robot's URDF to publish the state of the robot on the `/robot_description` and the `/tf` and `/tf_static` ROS topics.
 
@@ -25,7 +31,12 @@ The robot is a custom designed chassis with 2 defferential drive wheels, 1 casto
 
 1. Clone the repository into your ROS workspace's `src` folder
 
+     ```
+    cd <your_ros_workspace>/src
+
     `git clone https://github.com/akashgoyal2355/ExploreBot`
+    
+    ```
 
 2. Resolve the package's dependencies using [rosdep](https://docs.ros.org/en/galactic/Tutorials/Intermediate/Rosdep.html)
 
@@ -41,7 +52,7 @@ The robot is a custom designed chassis with 2 defferential drive wheels, 1 casto
     cd <your_ros_workspace>
     colcon build --symlink-install
     ```
-4. Source the executables in your ROS workspace
+4. Source the installed executables in your ROS workspace
 
     ```
     cd <your_ros_workspace>
