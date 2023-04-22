@@ -84,7 +84,9 @@ The robot is a custom designed chassis with 2 defferential drive wheels, 1 casto
 
 ![gazebo](/attachments/gazebo.PNG)
 
-# RQT Graph
+# ROS Graph
+
+![rosgraph](/attachments/rosgraph.png)
 
 # Compatibility
 This package is tested on
