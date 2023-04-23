@@ -18,12 +18,6 @@ def generate_launch_description():
     world_file_name = 'house.world'
     world_path = os.path.join(get_package_share_directory(package_name), 'worlds', world_file_name)
 
-    # rsp = IncludeLaunchDescription(
-    #             PythonLaunchDescriptionSource([os.path.join(
-    #                 get_package_share_directory(package_name),'launch','rsp.launch.py'
-    #             )]), launch_arguments={'use_sim_time': 'true'}.items()
-    # )
-
     use_sim_time = LaunchConfiguration('use_sim_time')
 
     # Process the URDF file
@@ -53,7 +47,6 @@ def generate_launch_description():
                         output='screen')
 
     return LaunchDescription([
-        # rsp,
         DeclareLaunchArgument(
             'use_sim_time',
             default_value='false',
