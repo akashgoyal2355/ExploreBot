@@ -51,15 +51,9 @@
                 <box size="0.3 0.3 0.15"/>
             </geometry>
         </collision>
-        <xacro:inertial_box mass="0.5" x="0.3" y="0.3" z="0.15">
-            <origin xyz="0.15 0 0.075" rpy="0 0 0"/>
-        </xacro:inertial_box>
+        <inertia ixx="0.0395416666667" ixy="0" ixz="0" iyy="0.106208333333" iyz="0" izz="0.106208333333"/>
     </link>
 
-    <!-- <gazebo reference="chassis">
-        <material>Gazebo/Red</material>
-    </gazebo> -->
-    
     <!-- LEFT WHEEL LINK -->
 
     <joint name="left_wheel_joint" type="continuous">
